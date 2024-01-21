@@ -20,3 +20,15 @@ class ShopCarDetail(models.Model):
         unique_together = [
             ["shop_car", "product"],
         ]
+
+
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+class OrderDetail(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    product = models.ForeignKey(product_models.Product, on_delete=models.CASCADE)
+    count = models.PositiveIntegerField()
+    price = models.PositiveIntegerField()

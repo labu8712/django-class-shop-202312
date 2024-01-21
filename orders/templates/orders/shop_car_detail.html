@@ -1,8 +1,14 @@
 {% extends "order_base.html" %}
 
+{% load django_bootstrap5 %}
+
 {% block order_body %}
     <ul>
         {% for product in products %}<li>{{ product.0.name }} | {{ product.1 }}</li>{% endfor %}
     </ul>
     總價：{{ total_price }}
+    <form action="{% url "orders:buy" %}" method="post" class="mt-2">
+        {% csrf_token %}
+        {% bootstrap_button button_type="submit" content="下單" %}
+    </form>
 {% endblock order_body %}
