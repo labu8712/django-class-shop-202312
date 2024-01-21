@@ -15,7 +15,9 @@
         {% bootstrap_css %}
     </head>
     <body>
-        <div class="container">
+        {% include "_navbar.html" %}
+ 
+        <div class="container mt-3">
             {% bootstrap_messages %}
  
             {% block body %}
