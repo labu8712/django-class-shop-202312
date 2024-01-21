@@ -23,7 +23,7 @@
                        aria-expanded="false">產品列表</a>
                     <ul class="dropdown-menu dropdown-menu-dark">
                         <li>
-                            <a class="dropdown-item" href="#">全部</a>
+                            <a class="dropdown-item" href="{% url "products:product_list" %}">全部</a>
                         </li>
                         {% if categories %}
                             <li>
@@ -31,7 +31,8 @@
                             </li>
                             {% for category in categories %}
                                 <li>
-                                    <a class="dropdown-item" href="#">{{ category.name }}</a>
+                                    <a class="dropdown-item"
+                                       href="{% url "products:product_list" %}?category={{ category.pk }}">{{ category.name }}</a>
                                 </li>
                             {% endfor %}
                         {% endif %}

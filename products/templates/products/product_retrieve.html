@@ -15,7 +15,9 @@
             {% endif %}
  
             {% if request.user.is_staff and perms.products.view_product %}
-                <a href="{% url "admin:products_product_change" object_id=product.pk %}">管理此產品</a>
+                <hr>
+                <a class="btn btn-info"
+                   href="{% url "admin:products_product_change" object_id=product.pk %}">管理此產品</a>
             {% endif %}
         </div>
     </div>

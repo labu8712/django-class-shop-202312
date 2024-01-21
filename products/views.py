@@ -11,6 +11,9 @@ def product_list(request):
         .order_by("name")
         .filter(status=product_models.Product.Status.SHOW)
     )
+    if category := request.GET.get("category"):
+        products = products.filter(category_id=category)
+
     return render(request, "products/product_list.html", {"products": products})
 
 
