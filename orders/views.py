@@ -10,4 +10,16 @@ def shop_car_detail(request):
         order_models.ShopCar,
         user=request.user,
     )
-    return render(request, "orders/shop_car_detail.html", {"shop_car": shop_car})
+
+    total_price = 0
+    products = []
+    for detail in shop_car.shopcardetail_set.all():
+        price = detail.product.price * detail.count
+        products.append([detail.product, price])
+        total_price += price
+
+    return render(
+        request,
+        "orders/shop_car_detail.html",
+        {"products": products, "total_price": total_price},
+    )
