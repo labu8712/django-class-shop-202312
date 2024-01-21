@@ -15,7 +15,8 @@
                                 點進詳細看更多
                             {% endif %}
                         </p>
-                        <a href="#" class="card-link">詳細資訊</a>
+                        <a href="{% url "products:product_retrieve" pk=product.pk %}"
+                           class="card-link">詳細資訊</a>
                     </div>
                 </div>
             </div>
@@ -25,6 +26,4 @@
             </div>
         {% endfor %}
     </div>
- 
-
 {% endblock product_body %}

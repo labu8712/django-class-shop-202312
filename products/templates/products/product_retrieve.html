@@ -1,0 +1,12 @@
+{% extends "product_base.html" %}
+
+{% block product_body %}
+    名稱：{{ product.name }}
+    金額：{{ product.price }}
+    庫存：{{ product.count }}
+
+    {% if product.description %}
+        <hr>
+        <p style="max-width: 100%;">{{ product.description|linebreaksbr }}</p>
+    {% endif %}
+{% endblock product_body %}
