@@ -1,12 +1,22 @@
 {% extends "product_base.html" %}
 
 {% block product_body %}
-    名稱：{{ product.name }}
-    金額：{{ product.price }}
-    庫存：{{ product.count }}
+    <div class="row">
+        <div class="col">
+            <h1>{{ product.name }}</h1>
+            <p>金額：{{ product.price }}</p>
+            <p>庫存：{{ product.count }}</p>
 
-    {% if product.description %}
-        <hr>
-        <p class="text-wrap text-break">{{ product.description|linebreaksbr }}</p>
-    {% endif %}
+            <a href="#">加入購物車</a>
+ 
+            {% if product.description %}
+                <hr>
+                <p class="text-wrap text-break">{{ product.description|linebreaksbr }}</p>
+            {% endif %}
+ 
+            {% if request.user.is_staff and perms.products.view_product %}
+                <a href="{% url "admin:products_product_change" object_id=product.pk %}">管理此產品</a>
+            {% endif %}
+        </div>
+    </div>
 {% endblock product_body %}
