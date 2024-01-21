@@ -1,5 +1,7 @@
 {% extends "product_base.html" %}
 
+{% load django_bootstrap5 %}
+
 {% block product_body %}
     <div class="row">
         <div class="col">
@@ -7,7 +9,12 @@
             <p>金額：{{ product.price }}</p>
             <p>庫存：{{ product.count }}</p>
 
-            <a href="#">加入購物車</a>
+            <form action="{% url "products:product_add_to_shop_car" pk=product.pk %}"
+                  method="post">
+                {% csrf_token %}
+                {% bootstrap_form add_to_shop_car_form %}
+                {% bootstrap_button button_type="submit" content="加入購物車" %}
+            </form>
  
             {% if product.description %}
                 <hr>
