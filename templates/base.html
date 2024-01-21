@@ -1,0 +1,27 @@
+{% load django_bootstrap5 %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            Shop
+            {% block title %}
+                - Default
+            {% endblock title %}
+        </title>
+
+        {% bootstrap_css %}
+    </head>
+    <body>
+        <div class="container">
+            {% bootstrap_messages %}
+ 
+            {% block body %}
+            {% endblock body %}
+        </div>
+
+        {% bootstrap_javascript %}
+    </body>
+</html>
