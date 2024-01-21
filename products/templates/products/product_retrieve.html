@@ -7,6 +7,6 @@
 
     {% if product.description %}
         <hr>
-        <p style="max-width: 100%;">{{ product.description|linebreaksbr }}</p>
+        <p class="text-wrap text-break">{{ product.description|linebreaksbr }}</p>
     {% endif %}
 {% endblock product_body %}
