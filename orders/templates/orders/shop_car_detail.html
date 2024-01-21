@@ -3,7 +3,9 @@
 {% block order_body %}
     <ul>
         {% for detail in shop_car.shopcardetail_set.all %}
-            <li>{{ detail.product.name }} | {{ detail.product.price }} * {{ detail.count }}</li>
+            <li>
+                {{ detail.product.name }} | {{ detail.product.price }} * {{ detail.count }} = {% widthratio detail.product.price 1 detail.count %}
+            </li>
         {% empty %}
         {% endfor %}
     </ul>
