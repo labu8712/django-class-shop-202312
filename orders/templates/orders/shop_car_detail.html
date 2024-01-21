@@ -1,0 +1,10 @@
+{% extends "order_base.html" %}
+
+{% block order_body %}
+    <ul>
+        {% for detail in shop_car.shopcardetail_set.all %}
+            <li>{{ detail.product.name }} | {{ detail.product.price }} * {{ detail.count }}</li>
+        {% empty %}
+        {% endfor %}
+    </ul>
+{% endblock order_body %}
